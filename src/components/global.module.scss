@@ -20,3 +20,25 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+
+}
+::-webkit-scrollbar-track {
+  backdrop-filter: blur(6px);
+  background: rgba(186, 186, 186, 0.15);
+}
+::-webkit-scrollbar-thumb {
+  background: #999999;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+::-webkit-scrollbar-thumb:hover {
+  transition: 0.3s;
+  background: #8a8a8a;
+}
+
+*::selection{
+  background: #b1b1b1;
+}
