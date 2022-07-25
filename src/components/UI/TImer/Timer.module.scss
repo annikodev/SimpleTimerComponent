@@ -1,0 +1,76 @@
+@mixin TimerBlock {
+  display: flex;
+  justify-content: center;
+  font-family: "Century Gothic";
+  align-items: center;
+  padding: 15px;
+  border-radius: 10px;
+  background: rgba(126, 126, 126, 0.1);
+}
+
+.timer__content {
+  color: #4f4f4f;
+  height: auto;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 30px;
+  backdrop-filter: blur(6px);
+  background: rgba(186, 186, 186, 0.15);
+  padding: 15px;
+  font-weight: 380;
+  .timer__head {
+    height: auto;
+    text-align: center;
+    font-size: 2em;
+    padding-bottom: 15px;
+  }
+  .timer__button {
+    @include TimerBlock;
+    margin: 2px 5px;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  .timer__button:hover {
+    background: darken(rgb(186, 186, 186), 10);
+  }
+}
+.timer__body {
+  height: auto;
+
+  .timer__label {
+    text-align: center;
+    font-size: 1.5em;
+    padding-bottom: 15px;
+  }
+
+
+  .timer__clock {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    .timer__datatimer {
+      margin: 5px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 50px;
+      .timer__numeber{
+        @include TimerBlock;
+        height: 100px;
+        margin-bottom: 5px;
+        font-size: 4em;
+      }
+      .timer__name {
+        @include TimerBlock;
+        font-size: 1.5em;
+        height: 20px;
+      }
+    }
+  }
+  @media screen and (max-width: 615px){
+    .timer__clock {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+

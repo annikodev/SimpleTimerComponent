@@ -1,0 +1,54 @@
+@mixin TimerBlock {
+  padding: 15px;
+  border-radius: 10px;
+  background: rgba(126, 126, 126, 0.1);
+}
+
+
+.timer__setting {
+  height: auto;
+  margin: 0px 8px 8px 7px;
+  @include TimerBlock;
+  .timer__list {
+    height: 200px;
+    scrollbar-gutter: stable;
+    overflow-y: scroll;
+  }
+  .timer__addbtn {
+    @include TimerBlock;
+    margin-top: 15px;
+    transition: 0.5s;
+    cursor: pointer;
+    text-align: center;
+  }
+  .timer__addbtn:hover{
+    transition: 0.5s;
+    background: darken(rgb(186, 186, 186), 10);
+  }
+}
+
+.timer__block {
+  @include TimerBlock;
+  padding: 5px;
+  display: flex;
+  height: 45px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  .timer__info{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    font-size: calc(1em + 0.5vw);
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Century Gothic";
+    @media screen and (min-width: 1080px) {
+      font-size: 1.35em;
+    }
+    div {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+}
