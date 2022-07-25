@@ -49,21 +49,7 @@ const Modale = ({visible, setVisible, addNew}) => {
                         shrink: true,
                     }}
                 />
-                <TextField
-                    onChange={(e)=>setEventValue({...eventValue, eventTime: e.target.value})}
-                    id="time"
-                    value={eventValue.eventTime}
 
-                    label="You'r time"
-                    type="time"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    inputProps={{
-                        step: 300,
-                    }}
-                    sx={{ width: 220, marginBottom: 2}}
-                />
             </div>
 
             <FormControl>

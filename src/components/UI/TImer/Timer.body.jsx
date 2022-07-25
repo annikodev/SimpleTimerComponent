@@ -26,26 +26,31 @@ const TimerBody = ({list}) => {
             <div className={styles.timer__label}>
                 <span>Countdown to {list.eventName}:</span>
             </div>
-            <div className={styles.timer__clock}>
-                <TimerDatatime
-                    value={time.days}
-                    tag={'days'}
-                />
-                <TimerDatatime
-                    value={time.hours}
+            {time==''?
+                <h1 style={{textAlign:'center'}}>Calculated...</h1>
+                :
+                <div className={styles.timer__clock}>
+                    <TimerDatatime
+                        value={time.days}
+                        tag={'days'}
+                    />
+                    <TimerDatatime
+                        value={time.hours}
 
-                    tag={'hours'}
-                />
-                <TimerDatatime
-                    value={time.minutes}
+                        tag={'hours'}
+                    />
+                    <TimerDatatime
+                        value={time.minutes}
 
-                    tag={'minutes'}
-                />
-                <TimerDatatime
-                    value={time.seconds}
-                    tag={'seconds'}
-                />
-            </div>
+                        tag={'minutes'}
+                    />
+                    <TimerDatatime
+                        value={time.seconds}
+                        tag={'seconds'}
+                    />
+                </div>
+            }
+
 
         </div>
     );

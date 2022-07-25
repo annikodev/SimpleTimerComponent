@@ -15,7 +15,6 @@ const Timer = () => {
             {id:3, eventName: 'Starting school', eventDate:'2017-05-19', eventTime:'07:33', showing: false},
     ])
     const [showingArr, setShowingArr] = useState(dataList.length>0?dataList.filter(el=>el.showing===true)[0]:{id:1, eventName: 'New Year', eventDate:'2223-01-01', eventTime:'07:33', showing:true })
-
     useEffect(()=>{
         setShowingArr(dataList.filter(el=>el.showing===true)[0])
     },[dataList])
@@ -23,9 +22,12 @@ const Timer = () => {
         setDateList([...dataList, newEvent])
     }
     const deleteEvent = (evID)=>{
-        setDateList(dataList.filter(el=> el.id!==evID))
+        if (dataList.filter(el=>el.id==evID)[0].showing===true){
+            console.log('это так не сработает')
+        }else {
+            setDateList(dataList.filter(el=> el.id!==evID))
+        }
     }
-
     const selectEvent = (evID) => {
         setDateList(dataList.map(el=>el.showing===true?{...el, showing: false}:{...el}).map(el=>el.id==evID?{...el, showing: true}:{...el}))
     }
