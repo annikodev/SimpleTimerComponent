@@ -9,22 +9,22 @@ const Timer = () => {
     const [settingshow, setShow] = useState(false)
     const [modal, setModal] = useState(false)
     const ChangeModalVisible = () => {setModal(!modal)}
-    const [dataList, setDateList] = useState([
-            {id:1, eventName: 'New Year', eventDate:'2023-01-01', eventTime:'07:33', showing:true },
-            {id:2, eventName: 'My birthday', eventDate:'2023-05-19', eventTime:'07:33', showing: false},
-            {id:3, eventName: 'Starting school', eventDate:'2017-05-19', eventTime:'07:33', showing: false},
-    ])
+    const arrJSON = JSON.parse(localStorage.getItem('list'))
+    const [dataList, setDateList] = useState(arrJSON?arrJSON:[{id:1, eventName: 'New Year', eventDate:'2023-01-01', eventTime:'07:33', showing:true },])
     const [showingArr, setShowingArr] = useState(dataList.length>0?dataList.filter(el=>el.showing===true)[0]:{id:1, eventName: 'New Year', eventDate:'2223-01-01', eventTime:'07:33', showing:true })
     useEffect(()=>{
         setShowingArr(dataList.filter(el=>el.showing===true)[0])
     },[dataList])
+
     const addNewEvent = (newEvent)=> {
         setDateList([...dataList, newEvent])
+        localStorage.setItem('list',JSON.stringify([...dataList, newEvent]))
     }
     const deleteEvent = (evID)=>{
         if (dataList.filter(el=>el.id==evID)[0].showing===true){
             console.log('это так не сработает')
         }else {
+            localStorage.setItem('list', JSON.stringify(dataList.filter(el=> el.id!==evID)))
             setDateList(dataList.filter(el=> el.id!==evID))
         }
     }
