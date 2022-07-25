@@ -4,7 +4,7 @@ import {Checkbox, IconButton, Radio, RadioGroup} from "@mui/material";
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
 import TimerBlock from "./Timer.block";
 
-const TimerSetting = ({setmodal, list, deleteElement}) => {
+const TimerSetting = ({setmodal, list, deleteElement, selectEvent}) => {
 
     return (
         <div className={styles.timer__setting}>
@@ -12,6 +12,7 @@ const TimerSetting = ({setmodal, list, deleteElement}) => {
                 <RadioGroup defaultValue={list.filter(el=> el.showing==true)[0].id}>
                     {list.map((item)=>
                         <TimerBlock
+                            selectEvent={selectEvent}
                             deleteElement={deleteElement}
                             key={item.id}
                             index={item.id}

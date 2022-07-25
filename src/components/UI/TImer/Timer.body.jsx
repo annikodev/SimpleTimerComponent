@@ -3,16 +3,22 @@ import styles from './Timer.module.scss'
 import TimerDatatime from "./Timer.datatime";
 
 const TimerBody = ({list}) => {
-    const deadline = new Date(list.eventDate)
-    const diff = deadline - new Date();
-    console.log(diff)
 
-    const [time, setTime] = useState({
-        days: Math.floor(diff / 1000 / 60 / 60 / 24),
-        hours: Math.floor(diff / 1000 / 60 / 60) % 24,
-        minutes: Math.floor(diff / 1000 / 60) % 60,
-        seconds: Math.floor(diff / 1000) % 60,
-    })
+    const [time, setTime] = useState('')
+    const deadline = new Date(list.eventDate)
+
+        useEffect(()=>{
+            const intervalId = setInterval(()=>{
+                let diff = deadline - new Date();
+                setTime({
+                    days: Math.floor(diff / 1000 / 60 / 60 / 24),
+                    hours: Math.floor(diff / 1000 / 60 / 60) % 24,
+                    minutes: Math.floor(diff / 1000 / 60) % 60,
+                    seconds: Math.floor(diff / 1000) % 60,
+                })
+            },1000)
+        },[list])
+
 
 
     return (
@@ -27,10 +33,12 @@ const TimerBody = ({list}) => {
                 />
                 <TimerDatatime
                     value={time.hours}
+
                     tag={'hours'}
                 />
                 <TimerDatatime
                     value={time.minutes}
+
                     tag={'minutes'}
                 />
                 <TimerDatatime

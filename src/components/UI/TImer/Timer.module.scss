@@ -66,9 +66,14 @@
       }
     }
   }
-  @media screen and (max-width: 615px){
+  @media screen and (max-width: 700px){
     .timer__clock {
       grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media screen and (max-width: 350px){
+    .timer__clock {
+      grid-template-columns: 1fr;
     }
   }
 }
